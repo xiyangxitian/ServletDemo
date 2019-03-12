@@ -47,5 +47,13 @@
         <servlet-name>Servlet3</servlet-name>
         <url-pattern>/s3</url-pattern>
     </servlet-mapping>
+    
+    <listener>
+        <listener-class>com.iotek.jee.servlet.WebContextListener</listener-class>
+    </listener>
+    <context-param>
+        <param-name>test</param-name>
+        <param-value>liyan</param-value>
+    </context-param>
 
 </web-app>

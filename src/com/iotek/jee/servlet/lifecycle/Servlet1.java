@@ -25,6 +25,7 @@ public class Servlet1 extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         print("service");
+        System.out.println("hashCode:"+getServletContext().hashCode());
     }
 
     @Override
