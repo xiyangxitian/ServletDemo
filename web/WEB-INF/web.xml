@@ -5,6 +5,7 @@
          version="4.0">
     <display-name>JavaWebDemo</display-name>
     <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 
@@ -46,6 +47,15 @@
     <servlet-mapping>
         <servlet-name>Servlet3</servlet-name>
         <url-pattern>/s3</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ProcessingServlet</servlet-name>
+        <servlet-class>com.iotek.jee.servlet.form.ProcessingServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProcessingServlet</servlet-name>
+        <url-pattern>/ps</url-pattern>
     </servlet-mapping>
     
     <listener>
