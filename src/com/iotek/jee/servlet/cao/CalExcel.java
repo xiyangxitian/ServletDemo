@@ -59,6 +59,7 @@ public class CalExcel {
         }
     }
 
+    //数组取出个次数组的所有可能
     private static Double[][] calD(Double[] array) {
         Double[][] result = new Double[array.length][array.length - 1];
         for (int i = 0; i < array.length; i++) {
