@@ -1,6 +1,5 @@
 package com.iotek.jee.servlet.cao;
 
-import javax.xml.transform.Source;
 import java.util.*;
 
 //用随机来解决 要不要启动多线程来做。
@@ -13,10 +12,9 @@ public class SuanScanner {
 
     public static void main(String[] args) throws InterruptedException {
         List<List<Double>> listAll = new ArrayList<>();
+        /*
         List<Double> cun = new ArrayList<>();
-
         Double yao = null;
-        int biao = 0;
         Scanner scanner = new Scanner(System.in);
         while(true){
             double v = scanner.nextDouble();
@@ -32,24 +30,79 @@ public class SuanScanner {
         for(int i=0;i<cun.size();i++){
             soure[i] = cun.get(i);
         }
+        */
+        Double yao = 118305.94;
+        Double[] soure = {
+                268.25,
+                291.82,
+                2.04,
+                20918.48,
+                159.56,
+                16407.56,
+                3.71,
+                15667.35,
+                25260.68,
+                3137.42,
+                7981.88,
+                17380.09,
+                44962.2,
+                58770.87,
+                -3897.08,
+                -7432.86,
+                -47654.99,
+                -319.37,
+                -224.63,
+                -4116.7,
+                25897.7,
+                47811.0,
+                613.14,
+                4259.5,
+                19426.62,
+                248.82,
+                54.64,
+                4698.79,
+                33.55,
+                2615.23,
+                60.23
+        };
 
-        for (int i = 0; i < 100; i++) {
+        int count = 0;
+        while (true) {
             List<Double> list = getCaoXiaoJie(soure, yao);
             if (!listAll.contains(list)) {
+                count = 0;
                 listAll.add(list);
+                continue;
+            }
+            //连着10次总数没有增加  就认为已经查到了所有数据
+            if (count++ > 10) {
+                break;
             }
         }
 
-
-        System.out.println("共有"+listAll.size()+"条数据符合要求。");
+        System.out.println("********************************************");
+        System.out.println("共有" + listAll.size() + "条数据符合要求。");
         sortListListDouble(listAll);
         printListListDouble(listAll);
 
     }
 
+    private static long sumCount = 1;
+
     public static List<Double> getCaoXiaoJie(Double[] soure, double yao) {
         Random random = new Random();
-        Double[] a = getRealArray(soure, yao);
+        Double[] a = null;
+        boolean flag = true;
+        for(Double d : soure){
+            if(d<0){
+                flag = false;
+            }
+        }
+        if(flag){
+            a = getRealArray(soure, yao);
+        }else{
+            a = soure;
+        }
         List<Integer> list = new ArrayList<>();
         List<Double> l = new ArrayList<>();
         while (true) {
@@ -68,6 +121,7 @@ public class SuanScanner {
                 continue;
             }
             if (sum > yao) {
+                sumCount++;
                 list.clear();
                 l.clear();
                 continue;
@@ -76,6 +130,8 @@ public class SuanScanner {
                 String result = "";
                 //先对l进行排序
                 Collections.sort(l);
+                System.out.println("第"+(sumCount)+"次查找到数据：");
+                printListDouble(l);
                 return l;
             }
         }
@@ -104,7 +160,7 @@ public class SuanScanner {
         Collections.sort(list, new Comparator<List<Double>>() {
             @Override
             public int compare(List<Double> o1, List<Double> o2) {
-                return o1.size()-o2.size();
+                return o1.size() - o2.size();
             }
         });
     }

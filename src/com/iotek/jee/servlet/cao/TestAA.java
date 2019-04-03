@@ -1,11 +1,24 @@
 package com.iotek.jee.servlet.cao;
 
+import javax.xml.transform.Source;
+import java.util.ArrayList;
+import java.util.List;
+
 public class TestAA {
 
     public static void main(String[] args) {
-//        23861.2=33.55+224.63+248.82+291.82+613.14+3137.42+3897.08+7432.86+7981.88
-        Double a = 33.55+224.63+248.82+291.82+613.14+3137.42+3897.08+7432.86+7981.88;
-        System.out.println(a);
+        List<Integer> l = new ArrayList<>();
+        l.add(1);
+        l.add(2);
+        l.add(3);
+        l.add(4);
+        System.out.println(l);
+        l.remove(1);
+        System.out.println(l);
+        l.add(1,5);
+        System.out.println(l);
+
     }
+
 
 }
