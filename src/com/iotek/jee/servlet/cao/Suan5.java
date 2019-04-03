@@ -41,10 +41,15 @@ public class Suan5 {
             for (Double d : l) {
                 sum += d;
             }
+            if(sum<yao){
+                continue;
+            }
             if (sum > yao) {
                 list.clear();
                 l.clear();
-            } else if (sum == yao) {
+                continue;
+            }
+            if (sum == yao) {
                 String result = "";
                 //先对l进行排序
                 Collections.sort(l);
