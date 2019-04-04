@@ -12,9 +12,9 @@ public class SuanSum {
 
 //    private static Double[] source = {1.0, 2.0, 3.0,6.0,5.0,4.0,7.0,8.0,9.0,10.0,12.0 };
 //    private static Double yao = 31.0;
-    private static boolean isAllZheng = false;//是否全是正数
+    private static boolean isAllZheng = true;//是否全是正数
     static List<Double[]> list = new ArrayList<>();
-
+    private static int minArray = 1;//拆分的最小数组
 
     static Double[] source = new Double[]{
             268.25,
@@ -31,12 +31,12 @@ public class SuanSum {
             17380.09,
             44962.2,
             58770.87,
-            -3897.08,
-            -7432.86,
-            -47654.99,
-            -319.37,
-            -224.63,
-            -4116.7,
+//            -3897.08,
+//            -7432.86,
+//            -47654.99,
+//            -319.37,
+//            -224.63,
+//            -4116.7,
             25897.7,
             47811.0,
             613.14,
@@ -68,8 +68,12 @@ public class SuanSum {
     private static void calResult(Double[] d){
         if(isAllZheng){
             d = getRealArray(d, yao);
+            sortDouble(d);
+            minArray = getMinArray(d);
+        }else{
+            sortDouble(d);
         }
-        sortDouble(d);
+
         getChildren(d);
 
         if(list.size()==0){
@@ -113,7 +117,7 @@ public class SuanSum {
                     list.add(d1);
                     continue;
                 }
-                if(d1.length>1){
+                if(d1.length>minArray){
                     getChildren(d1);
                 }
             }else{
@@ -121,7 +125,7 @@ public class SuanSum {
                     System.out.println("^-^得到结果："+Arrays.toString(d1));
                     list.add(d1);
                 }
-                if(d1.length>1){
+                if(d1.length>minArray){
                     getChildren(d1);
                 }
             }
@@ -136,6 +140,7 @@ public class SuanSum {
         }
         return sum;
     }
+    //从小到大排序
     private static void sortDouble(Double[] d) {
         for (int i = 0; i < d.length - 1; i++) {
             for (int j = i + 1; j < d.length; j++) {
@@ -173,6 +178,21 @@ public class SuanSum {
             result[i++] = d;
         }
         return result;
+    }
+
+    //传个已经排序好的数组
+    static int getMinArray(Double[] d){
+        double sum = 0d;
+        int k = 1;
+        for(int i = d.length-1;i>0;i--){
+            sum += d[i];
+            if(sum<yao){
+                k++;
+            }else{
+                break;
+            }
+        }
+        return k;
     }
 
 }

@@ -117,6 +117,7 @@ public class SuanScanner {
             for (Double d : l) {
                 sum += d;
             }
+            //都是正数的时候这样可以
             if (sum < yao) {
                 continue;
             }
