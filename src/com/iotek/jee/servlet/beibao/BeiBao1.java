@@ -77,11 +77,45 @@ public class BeiBao1 {
         return findGroup1(temp, sum.add(doubles[0])?sum:sum, yao)||findGroup1(temp, sum, yao);
     }
 
-
+    static Double[] source = new Double[]{
+            268.25,
+            291.82,
+            2.04,
+            20918.48,
+            159.56,
+            3.71,
+            16407.56,
+            15667.35,
+            25260.68,
+            3137.42,
+            7981.88,
+            17380.09,
+            44962.2,
+            58770.87,
+            -3897.08,
+            -7432.86,
+            -47654.99,
+            -319.37,
+            -224.63,
+            -4116.7,
+            25897.7,
+            47811.0,
+            613.14,
+            4259.5,
+            19426.62,
+            248.82,
+            54.64,
+            4698.79,
+            33.55,
+            2615.23,
+            60.23
+    };
+    static double yao = 118305.94;
     public static void main(String[] args) {
         Double[] n = {8.0, 4.0, 5.0, 10.0, 3.0};
         Double sum = 7.0;
-        findGroup(n, sum);
+        boolean group = findGroup(source, yao);
+        System.out.println("是否取得结果："+group);
     }
 
 
