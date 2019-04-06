@@ -17,7 +17,7 @@ public class BeiBao3 {
     //1,2,3,4  1,2,3, 1,2,4 1,3,4 2,3,4
     //1,2,3,4  1,2  1,3 1,4 2,3 2,4 3,4
     public static void main(String[] args) {
-        int combin = combin(4, 2);
+        int combin = combin(40, 20);
         System.out.println("结果:" + combin);
     }
 
