@@ -34,6 +34,7 @@ public class KinN1 {
 //                System.out.println(d.toString());
 //                System.out.println("l:" + Arrays.toString(l.toArray()));
                 for (int i : d) {
+                    //数组太长的时候这里会内存出来
                     l.add(i);
                 }
             }

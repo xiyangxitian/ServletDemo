@@ -1,6 +1,9 @@
-package com.iotek.jee.servlet.beibao;
+package cao;
 
-public class BeiBao3 {
+/**
+ * 从m个数中取n个数共有多少个可能的组合数量
+ */
+public class CuHCount {
     //从m个数中取n个数共有多少个可能的组合。
     static int combin(int m, int n) {
         if (m == n || n == 0) {
