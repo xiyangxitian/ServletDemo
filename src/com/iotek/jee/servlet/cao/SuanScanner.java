@@ -31,39 +31,96 @@ public class SuanScanner {
             soure[i] = cun.get(i);
         }
         */
-        Double yao = 118305.94;
+        Double yao = -136996.6;
         Double[] soure = {
-                268.25,
-                291.82,
-                2.04,
-                20918.48,
-                159.56,
-                16407.56,
-                3.71,
-                15667.35,
-                25260.68,
-                3137.42,
-                7981.88,
-                17380.09,
-                44962.2,
-                58770.87,
-                -3897.08,
-                -7432.86,
-                -47654.99,
-                -319.37,
-                -224.63,
-                -4116.7,
-                25897.7,
-                47811.0,
-                613.14,
-                4259.5,
-                19426.62,
-                248.82,
-                54.64,
-                4698.79,
-                33.55,
-                2615.23,
-                60.23
+                -200399.26,
+                -420001d,
+                -125103.6,
+                -54644.99,
+                -113299.48,
+                -807715.47,
+                -100000d,
+                -86623d,
+                -271681.97,
+                -51000d,
+                -300000d,
+                -994356.41,
+                -264884.2,
+                -66816.02,
+                -90737.97,
+                -360000d,
+                -44300d,
+                -80000d,
+                -56222.81,
+                -54501.4,
+                -341679.73,
+                -120000d,
+                -200000d,
+                -1250856.16,
+                -70000d,
+                -472280.27,
+                -304645.85,
+                -33889.9,
+                -104632.5,
+                -50000d,
+                -145274.01,
+                -31260d,
+                -157248d,
+                -923819.43,
+                -330757d,
+                -49161d,
+                -338000d,
+                -85000d,
+                -387246.5,
+                -80103.74,
+                -50000d,
+                -392138.76,
+                -48781.5,
+                -100000d,
+                -27843d,
+                -50000d,
+                43748.27,
+                -93009.19,
+                -50000d,
+                -50000d,
+                -29510.8,
+                -70000d,
+                -40000d,
+                -477000d,
+                -68772.5,
+                -52458.45,
+                -1749508.8,
+                -30000d,
+                -100752.25,
+                -29999.7,
+                -337573.2,
+                -39850d,
+                -46103.88,
+                -41600d,
+                -36450d,
+                74096.83,
+                -93220.01,
+                -49977.49,
+                -100000d,
+                -69999.98,
+                -50000d,
+                19150d,
+                -50000d,
+                -60000d,
+                -30093.7,
+                -413169d,
+                -24805.52,
+                -1026275.88,
+                -2099925.72,
+                -448566.41,
+                -15940.6,
+                0.7,
+                -36846d,
+                -166000d,
+                -125920d,
+                -237571.96,
+                -296420.1,
+                0.8
         };
 
         int count = 0;
@@ -89,18 +146,24 @@ public class SuanScanner {
 
     private static long sumCount = 1;
 
+    /**
+     *
+     * @param soure
+     * @param yao
+     * @return
+     */
     public static List<Double> getCaoXiaoJie(Double[] soure, double yao) {
         Random random = new Random();
         Double[] a = null;
         boolean flag = true;
-        for(Double d : soure){
-            if(d<0){
+        for (Double d : soure) {
+            if (d < 0) {
                 flag = false;
             }
         }
-        if(flag){
+        if (flag) {
             a = getRealArray(soure, yao);
-        }else{
+        } else {
             a = soure;
         }
         List<Integer> list = new ArrayList<>();
@@ -118,10 +181,10 @@ public class SuanScanner {
                 sum += d;
             }
             //都是正数的时候这样可以
-            if (sum < yao) {
+            if (flag && sum < yao) {
                 continue;
             }
-            if (sum > yao) {
+            if (l.size() >= soure.length) {
                 sumCount++;
                 list.clear();
                 l.clear();
@@ -131,7 +194,7 @@ public class SuanScanner {
                 String result = "";
                 //先对l进行排序
                 Collections.sort(l);
-                System.out.println("第"+(sumCount)+"次查找到数据：");
+                System.out.println("第" + (sumCount) + "次查找到数据：");
                 printListDouble(l);
                 return l;
             }
